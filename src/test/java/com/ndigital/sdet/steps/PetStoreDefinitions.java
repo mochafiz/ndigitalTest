@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ndigital.sdet.app.model.User;
 import com.ndigital.sdet.app.model.addPet.AddPetModel;
+import com.ndigital.sdet.app.model.school.SchoolModel;
+import com.ndigital.sdet.app.model.school.Student;
 import com.ndigital.sdet.app.pages.PetstoreController;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,6 +15,10 @@ import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.ScenarioSteps;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,6 +30,7 @@ public class PetStoreDefinitions extends ScenarioSteps {
     private ValidatableResponse findPetByStatusResponse;
     private Response updateUserResponse;
     private User getUserResponse;
+    private SchoolModel school;
 
     @Given("User Add new Pet API with data:")
     public void userAddNewPetAPIWithData(String body) {
@@ -92,6 +99,43 @@ public class PetStoreDefinitions extends ScenarioSteps {
         assertEquals(expected.getPhone(), getUserResponse.getPhone());
         assertEquals(expected.getUserStatus(), getUserResponse.getUserStatus());
         assertEquals(expected.getPassword(), getUserResponse.getPassword());
+
+    }
+
+    @Given("User read school json as object")
+    public void userReadSchoolJsonAsObject() throws IOException {
+        File file = new File(this.getClass().getClassLoader().getResource("school.json").getFile());
+        ObjectMapper objectMapper = new ObjectMapper();
+        school = objectMapper.readValue(file, SchoolModel.class);
+    }
+
+    @Then("Print the student value")
+    public void printTheStudentValue() {
+        System.out.println("The name of all students in the school:\n");
+        List<Student> students = school.getSchool().getStudent();
+
+        for (Student student : students) {
+            System.out.println(student.getName() + "\n");
+        }
+
+        System.out.println("The code of everything in the school:\n");
+        for (Student student : students) {
+            System.out.println(student.getCode() != null ? student.getCode() + "\n" : "");
+        }
+        System.out.println(school.getSchool().getBicycle().getCode() + "\n");
+
+        System.out.println("The third student is : " + students.get(2).toString() + "\n");
+        System.out.println("The last student in order is : " + students.get(students.size() - 1).toString() + "\n");
+
+        System.out.println("Filter student with code number :\n");
+        students.stream().filter(student -> student.getCode() != null).forEach(student -> {
+            System.out.println(student.toString() + "\n");
+        });
+
+        System.out.println("Filter all students with grade smaller than 80 :\n");
+        students.stream().filter(student -> student.getGrade() < 80).forEach(student -> {
+            System.out.println(student.toString());
+        });
 
     }
 

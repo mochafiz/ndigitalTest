@@ -76,3 +76,8 @@ Feature: API Automation for Pet and User data on Petstore
       "userStatus": 1
     }
     """
+
+  @Task4
+  Scenario: Show school value on json
+    Given User read school json as object
+    Then Print the student value

@@ -1,0 +1,36 @@
+{
+  "school": {
+    "student": [
+      {
+        "type": "reference",
+        "name": "Aan Abdullah",
+        "homework": "Sayings of the Century",
+        "grade": 89.95
+      },
+      {
+        "type": "fiction",
+        "name": "Bima Budiarto",
+        "homework": "Sword of Honour",
+        "grade": 52.99
+      },
+      {
+        "type": "fiction",
+        "name": "Citra Candrawijaya",
+        "homework": "Moby Dick",
+        "code": "0-553-21311-3",
+        "grade": 81.99
+      },
+      {
+        "type": "fiction",
+        "name": "Devi Dinata",
+        "homework": "The Lord of the Rings",
+        "code": "0-395-19395-8",
+        "grade": 22.99
+      }
+    ],
+    "bicycle": {
+      "color": "red",
+      "code": "1-105-19125-3"
+    }
+  }
+}
