@@ -42,3 +42,8 @@ Feature: API Automation for Pet and User data on Petstore
         "status": "available"
       }
     """
+
+  @Task2
+  Scenario: Find Pet by Status
+    Given User Find Pet by Status "available"
+    Then User response should be same with schema and status code 200

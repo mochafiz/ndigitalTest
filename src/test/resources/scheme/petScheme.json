@@ -1,0 +1,351 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "array",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": [],
+  "examples": [
+    [
+      {
+        "id": 9222968140491030000,
+        "category": {
+          "id": 0,
+          "name": "string"
+        },
+        "name": "doggie",
+        "photoUrls": [
+          "string"
+        ],
+        "tags": [
+          {
+            "id": 0,
+            "name": "string"
+          }
+        ],
+        "status": "available"
+      },
+      {
+        "id": 9222968140491030000,
+        "category": {
+          "id": 0,
+          "name": "string"
+        },
+        "name": "doggie",
+        "photoUrls": [
+          "string"
+        ],
+        "tags": [
+          {
+            "id": 0,
+            "name": "yywywyuuwwywyywywywywwyi"
+          }
+        ],
+        "status": "available"
+      }
+    ]
+  ],
+  "additionalItems": true,
+  "items": {
+    "$id": "#/items",
+    "anyOf": [
+      {
+        "$id": "#/items/anyOf/0",
+        "type": "object",
+        "title": "The first anyOf schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "id": 9222968140491030000,
+            "category": {
+              "id": 0,
+              "name": "string"
+            },
+            "name": "doggie",
+            "photoUrls": [
+              "string"
+            ],
+            "tags": [
+              {
+                "id": 0,
+                "name": "string"
+              }
+            ],
+            "status": "available"
+          }
+        ],
+        "required": [
+          "id",
+          "category",
+          "name",
+          "photoUrls",
+          "tags",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "$id": "#/items/anyOf/0/properties/id",
+            "type": "integer",
+            "title": "The id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+              9222968140491030000
+            ]
+          },
+          "category": {
+            "$id": "#/items/anyOf/0/properties/category",
+            "type": "object",
+            "title": "The category schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "id": 0,
+                "name": "string"
+              }
+            ],
+            "required": [
+              "id",
+              "name"
+            ],
+            "properties": {
+              "id": {
+                "$id": "#/items/anyOf/0/properties/category/properties/id",
+                "type": "integer",
+                "title": "The id schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "name": {
+                "$id": "#/items/anyOf/0/properties/category/properties/name",
+                "type": "string",
+                "title": "The name schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "string"
+                ]
+              }
+            },
+            "additionalProperties": true
+          },
+          "name": {
+            "$id": "#/items/anyOf/0/properties/name",
+            "type": "string",
+            "title": "The name schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "doggie"
+            ]
+          },
+          "photoUrls": {
+            "$id": "#/items/anyOf/0/properties/photoUrls",
+            "type": "array",
+            "title": "The photoUrls schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+              [
+                "string"
+              ]
+            ],
+            "additionalItems": true,
+            "items": {
+              "$id": "#/items/anyOf/0/properties/photoUrls/items",
+              "anyOf": [
+                {
+                  "$id": "#/items/anyOf/0/properties/photoUrls/items/anyOf/0",
+                  "type": "string",
+                  "title": "The first anyOf schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "string"
+                  ]
+                }
+              ]
+            }
+          },
+          "tags": {
+            "$id": "#/items/anyOf/0/properties/tags",
+            "type": "array",
+            "title": "The tags schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+              [
+                {
+                  "id": 0,
+                  "name": "string"
+                }
+              ]
+            ],
+            "additionalItems": true,
+            "items": {
+              "$id": "#/items/anyOf/0/properties/tags/items",
+              "anyOf": [
+                {
+                  "$id": "#/items/anyOf/0/properties/tags/items/anyOf/0",
+                  "type": "object",
+                  "title": "The first anyOf schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "id": 0,
+                      "name": "string"
+                    }
+                  ],
+                  "required": [
+                    "id",
+                    "name"
+                  ],
+                  "properties": {
+                    "id": {
+                      "$id": "#/items/anyOf/0/properties/tags/items/anyOf/0/properties/id",
+                      "type": "integer",
+                      "title": "The id schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    },
+                    "name": {
+                      "$id": "#/items/anyOf/0/properties/tags/items/anyOf/0/properties/name",
+                      "type": "string",
+                      "title": "The name schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "examples": [
+                        "string"
+                      ]
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              ]
+            }
+          },
+          "status": {
+            "$id": "#/items/anyOf/0/properties/status",
+            "type": "string",
+            "title": "The status schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "available"
+            ]
+          }
+        },
+        "additionalProperties": true
+      },
+      {
+        "$id": "#/items/anyOf/1",
+        "type": "object",
+        "title": "The second anyOf schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "id": 9222968140491030000,
+            "name": "Goot Doggie",
+            "photoUrls": [
+              "https://media.karousell.com/media/photos/products/2017/09/14/doggi_door_stopper_1505372529_5cdd1eba0"
+            ],
+            "tags": [],
+            "status": "available"
+          }
+        ],
+        "required": [
+          "id",
+          "name",
+          "photoUrls",
+          "tags",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "$id": "#/items/anyOf/1/properties/id",
+            "type": "integer",
+            "title": "The id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+              9222968140491030000
+            ]
+          },
+          "name": {
+            "$id": "#/items/anyOf/1/properties/name",
+            "type": "string",
+            "title": "The name schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "Goot Doggie"
+            ]
+          },
+          "photoUrls": {
+            "$id": "#/items/anyOf/1/properties/photoUrls",
+            "type": "array",
+            "title": "The photoUrls schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+              [
+                "https://media.karousell.com/media/photos/products/2017/09/14/doggi_door_stopper_1505372529_5cdd1eba0"
+              ]
+            ],
+            "additionalItems": true,
+            "items": {
+              "$id": "#/items/anyOf/1/properties/photoUrls/items",
+              "anyOf": [
+                {
+                  "$id": "#/items/anyOf/1/properties/photoUrls/items/anyOf/0",
+                  "type": "string",
+                  "title": "The first anyOf schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                    "https://media.karousell.com/media/photos/products/2017/09/14/doggi_door_stopper_1505372529_5cdd1eba0"
+                  ]
+                }
+              ]
+            }
+          },
+          "tags": {
+            "$id": "#/items/anyOf/1/properties/tags",
+            "type": "array",
+            "title": "The tags schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+              []
+            ],
+            "additionalItems": true,
+            "items": {
+              "$id": "#/items/anyOf/1/properties/tags/items"
+            }
+          },
+          "status": {
+            "$id": "#/items/anyOf/1/properties/status",
+            "type": "string",
+            "title": "The status schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "available"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    ]
+  }
+}

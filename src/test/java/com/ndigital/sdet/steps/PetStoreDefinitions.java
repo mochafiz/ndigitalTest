@@ -6,6 +6,8 @@ import com.ndigital.sdet.app.model.addPet.AddPetModel;
 import com.ndigital.sdet.app.pages.PetstoreController;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.restassured.module.jsv.JsonSchemaValidator;
+import io.restassured.response.ValidatableResponse;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -16,6 +18,7 @@ public class PetStoreDefinitions extends ScenarioSteps {
     @Steps
     private PetstoreController petstoreController = new PetstoreController();
     private AddPetModel addPetResponse;
+    private ValidatableResponse findPetByStatusResponse;
 
     @Given("User Add new Pet API with data:")
     public void userAddNewPetAPIWithData(String body) {
@@ -42,6 +45,16 @@ public class PetStoreDefinitions extends ScenarioSteps {
         for (int i = 0; i == expected.getPhotoUrls().size(); i++) {
             assertEquals(expected.getPhotoUrls().get(i), addPetResponse.getPhotoUrls().get(i));
         }
+    }
+
+    @Given("User Find Pet by Status {string}")
+    public void userFindPetByStatus(String status) {
+        findPetByStatusResponse = petstoreController.getPathByStatus(status);
+    }
+
+    @Then("User response should be same with schema and status code {int}")
+    public void userResponseShouldBeSameWithSchemaAndStatusCode(int statusCode) {
+        findPetByStatusResponse.statusCode(statusCode).assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("scheme/petScheme.json"));
     }
 
 

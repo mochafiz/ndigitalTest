@@ -3,6 +3,7 @@ package com.ndigital.sdet.app.pages;
 
 import com.ndigital.sdet.app.model.addPet.AddPetModel;
 import io.restassured.http.ContentType;
+import io.restassured.response.ValidatableResponse;
 
 import static net.serenitybdd.rest.SerenityRest.given;
 
@@ -24,6 +25,19 @@ public class PetstoreController {
                 .extract()
                 .response()
                 .as(AddPetModel.class);
+    }
+
+    public ValidatableResponse getPathByStatus(String status) {
+        return given()
+                .baseUri(baseUri)
+                .basePath("/pet")
+                .log().all()
+                .queryParam("status", status)
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .get("/findByStatus")
+                .then()
+                .log().all();
     }
 
 
