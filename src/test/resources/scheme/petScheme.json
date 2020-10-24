@@ -8,7 +8,7 @@
   "examples": [
     [
       {
-        "id": 9222968140491030000,
+        "id": 9222895647106167863,
         "category": {
           "id": 0,
           "name": "string"
@@ -26,7 +26,7 @@
         "status": "available"
       },
       {
-        "id": 9222968140491030000,
+        "id": 9222895647106167878,
         "category": {
           "id": 0,
           "name": "string"
@@ -38,7 +38,7 @@
         "tags": [
           {
             "id": 0,
-            "name": "yywywyuuwwywyywywywywwyi"
+            "name": "string"
           }
         ],
         "status": "available"
@@ -57,7 +57,7 @@
         "default": {},
         "examples": [
           {
-            "id": 9222968140491030000,
+            "id": 9222895647106167863,
             "category": {
               "id": 0,
               "name": "string"
@@ -91,7 +91,7 @@
             "description": "An explanation about the purpose of this instance.",
             "default": 0,
             "examples": [
-              9222968140491030000
+              9222895647106167863
             ]
           },
           "category": {
@@ -254,18 +254,26 @@
         "default": {},
         "examples": [
           {
-            "id": 9222968140491030000,
-            "name": "Goot Doggie",
+            "id": 2,
+            "category": {
+              "id": 2,
+              "name": "German Shepeherd Dog"
+            },
             "photoUrls": [
-              "https://media.karousell.com/media/photos/products/2017/09/14/doggi_door_stopper_1505372529_5cdd1eba0"
+              "Doggie"
             ],
-            "tags": [],
+            "tags": [
+              {
+                "id": 2,
+                "name": "Loyal Breed"
+              }
+            ],
             "status": "available"
           }
         ],
         "required": [
           "id",
-          "name",
+          "category",
           "photoUrls",
           "tags",
           "status"
@@ -278,18 +286,48 @@
             "description": "An explanation about the purpose of this instance.",
             "default": 0,
             "examples": [
-              9222968140491030000
+              2
             ]
           },
-          "name": {
-            "$id": "#/items/anyOf/1/properties/name",
-            "type": "string",
-            "title": "The name schema",
+          "category": {
+            "$id": "#/items/anyOf/1/properties/category",
+            "type": "object",
+            "title": "The category schema",
             "description": "An explanation about the purpose of this instance.",
-            "default": "",
+            "default": {},
             "examples": [
-              "Goot Doggie"
-            ]
+              {
+                "id": 2,
+                "name": "German Shepeherd Dog"
+              }
+            ],
+            "required": [
+              "id",
+              "name"
+            ],
+            "properties": {
+              "id": {
+                "$id": "#/items/anyOf/1/properties/category/properties/id",
+                "type": "integer",
+                "title": "The id schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  2
+                ]
+              },
+              "name": {
+                "$id": "#/items/anyOf/1/properties/category/properties/name",
+                "type": "string",
+                "title": "The name schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "German Shepeherd Dog"
+                ]
+              }
+            },
+            "additionalProperties": true
           },
           "photoUrls": {
             "$id": "#/items/anyOf/1/properties/photoUrls",
@@ -299,7 +337,7 @@
             "default": [],
             "examples": [
               [
-                "https://media.karousell.com/media/photos/products/2017/09/14/doggi_door_stopper_1505372529_5cdd1eba0"
+                "Doggie"
               ]
             ],
             "additionalItems": true,
@@ -313,7 +351,7 @@
                   "description": "An explanation about the purpose of this instance.",
                   "default": "",
                   "examples": [
-                    "https://media.karousell.com/media/photos/products/2017/09/14/doggi_door_stopper_1505372529_5cdd1eba0"
+                    "Doggie"
                   ]
                 }
               ]
@@ -326,11 +364,58 @@
             "description": "An explanation about the purpose of this instance.",
             "default": [],
             "examples": [
-              []
+              [
+                {
+                  "id": 2,
+                  "name": "Loyal Breed"
+                }
+              ]
             ],
             "additionalItems": true,
             "items": {
-              "$id": "#/items/anyOf/1/properties/tags/items"
+              "$id": "#/items/anyOf/1/properties/tags/items",
+              "anyOf": [
+                {
+                  "$id": "#/items/anyOf/1/properties/tags/items/anyOf/0",
+                  "type": "object",
+                  "title": "The first anyOf schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "id": 2,
+                      "name": "Loyal Breed"
+                    }
+                  ],
+                  "required": [
+                    "id",
+                    "name"
+                  ],
+                  "properties": {
+                    "id": {
+                      "$id": "#/items/anyOf/1/properties/tags/items/anyOf/0/properties/id",
+                      "type": "integer",
+                      "title": "The id schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": 0,
+                      "examples": [
+                        2
+                      ]
+                    },
+                    "name": {
+                      "$id": "#/items/anyOf/1/properties/tags/items/anyOf/0/properties/name",
+                      "type": "string",
+                      "title": "The name schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "examples": [
+                        "Loyal Breed"
+                      ]
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              ]
             }
           },
           "status": {

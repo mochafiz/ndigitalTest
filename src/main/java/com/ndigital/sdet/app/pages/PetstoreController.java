@@ -1,8 +1,10 @@
 package com.ndigital.sdet.app.pages;
 
 
+import com.ndigital.sdet.app.model.User;
 import com.ndigital.sdet.app.model.addPet.AddPetModel;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 
 import static net.serenitybdd.rest.SerenityRest.given;
@@ -38,6 +40,33 @@ public class PetstoreController {
                 .get("/findByStatus")
                 .then()
                 .log().all();
+    }
+
+    public Response updateUser(String username, String body) {
+        return given()
+                .baseUri(baseUri)
+                .basePath("/user")
+                .log().all()
+                .body(body)
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .when()
+                .put(username);
+    }
+
+    public User getUser(String username) {
+        return given()
+                .baseUri(baseUri)
+                .basePath("/user")
+                .log().all()
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .when()
+                .get(username)
+                .then()
+                .statusCode(200)
+                .extract()
+                .as(User.class);
     }
 
 
